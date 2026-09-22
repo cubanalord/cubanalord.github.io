@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CubanaTech Studio · Web Developer for Restaurants & Businesses</title>
+  <!-- Bootstrap 5 CDN + icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-orange: #ff6600;
+      --primary-orange-light: #fff2e6;
+    }
+    body {
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      background-color: #ffffff;
+      color: #1e1e1e;
+    }
+    .bg-orange { background-color: #ff6600 !important; }
+    .text-orange { color: #ff6600 !important; }
+    .btn-orange {
+      background-color: #ff6600;
+      border-color: #ff6600;
+      color: #ffffff;
+      font-weight: 500;
+    }
+    .btn-orange:hover,
+    .btn-orange:focus {
+      background-color: #e65c00;
+      border-color: #e65c00;
+      color: #ffffff;
+    }
+    .btn-outline-orange {
+      border: 1px solid #ff6600;
+      color: #ff6600;
+      background: transparent;
+    }
+    .btn-outline-orange:hover {
+      background-color: #ff6600;
+      color: #ffffff;
+    }
+    .card {
+      border: 1px solid #f0f0f0;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      background-color: #ffffff;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.05);
+    }
+    .service-card { border-top: 4px solid #ff6600; }
+    .project-card { border-bottom: 3px solid #ff6600; }
+    .pricing-card { border: 1px solid #eaeaea; }
+    .pricing-card.popular {
+      border: 2px solid #ff6600;
+      box-shadow: 0 8px 20px rgba(255, 102, 0, 0.08);
+    }
+    .hero-section { padding: 4rem 0; background-color: #ffffff; }
+    .whatsapp-btn {
+      background-color: #25D366;
+      border-color: #25D366;
+      color: white;
+    }
+    .whatsapp-btn:hover {
+      background-color: #1da851;
+      border-color: #1da851;
+      color: white;
+    }
+    .section-title { font-weight: 700; letter-spacing: -0.02em; }
+    .section-subtitle { color: #5a5a5a; }
+    .navbar-brand { font-weight: 700; color: #1e1e1e !important; }
+    .navbar-brand span { color: #ff6600; }
+    .nav-link { color: #2c2c2c; font-weight: 500; }
+    .nav-link:hover { color: #ff6600; }
+    .list-unstyled li { margin-bottom: 0.5rem; }
+    .contact-info i { color: #ff6600; width: 1.5rem; }
+    .global-badge {
+      background-color: #fff2e6;
+      color: #ff6600;
+      font-weight: 500;
+      border: 1px solid #ffe0cc;
+    }
+
+    /* currency toggle */
+    .currency-toggle .btn {
+      min-width: 100px;
+      font-weight: 600;
+      border-radius: 40px !important;
+      padding: 0.45rem 1.25rem;
+      transition: all 0.2s ease;
+    }
+    .currency-toggle .btn.active {
+      background-color: #ff6600;
+      border-color: #ff6600;
+      color: #ffffff;
+      box-shadow: 0 4px 10px rgba(255, 102, 0, 0.25);
+    }
+    .currency-toggle .btn:not(.active) {
+      background-color: #ffffff;
+      border-color: #ff6600;
+      color: #ff6600;
+    }
+    .currency-toggle .btn:not(.active):hover {
+      background-color: #fff2e6;
+      border-color: #ff6600;
+      color: #ff6600;
+    }
+
+    /* price display */
+    .price-main {
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #1e1e1e;
+    }
+    .price-sub {
+      font-size: 0.9rem;
+      color: #6c757d;
+      margin-top: 0.25rem;
+      min-height: 1.4rem;
+    }
+
+    /* mobile tweaks */
+    @media (max-width: 576px) {
+      .price-main { font-size: 2rem; }
+      .currency-toggle .btn { min-width: 80px; padding: 0.35rem 0.8rem; font-size: 0.9rem; }
+      .pricing-card { padding: 1.25rem !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">CubanaTech <span>Studio</span></a>
+      <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav" aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="row align-items-center g-5">
+        <div class="col-lg-7">
+          <span class="badge global-badge px-3 py-2 mb-3 rounded-pill"><i class="bi bi-globe2 me-1"></i> Serving clients worldwide — remote & on‑site</span>
+          <h1 class="display-4 fw-bold lh-sm mb-3">Websites that grow your business — anywhere in the world.</h1>
+          <p class="lead text-secondary mb-4">I build fast, mobile‑first websites for restaurants, small businesses, and large organizations. Based in Nigeria, working with clients across Africa, Europe, the Americas, and beyond.</p>
+          <div class="d-flex flex-wrap gap-3">
+            <a href="https://wa.me/2348012345678?text=Hello%20Chidi%2C%20I%20need%20a%20website%20for%20my%20business" target="_blank" class="btn whatsapp-btn btn-lg px-4 py-3 rounded-pill fw-semibold">
+              <i class="bi bi-whatsapp me-2"></i>Chat on WhatsApp
+            </a>
+            <a href="#projects" class="btn btn-outline-orange btn-lg px-4 py-3 rounded-pill fw-semibold">See my work</a>
+          </div>
+          <div class="d-flex flex-wrap gap-4 mt-4 pt-2 text-secondary">
+            <span><i class="bi bi-check-circle-fill text-orange me-1"></i> 50+ projects</span>
+            <span><i class="bi bi-check-circle-fill text-orange me-1"></i> 4.9★ client rating</span>
+            <span><i class="bi bi-check-circle-fill text-orange me-1"></i> 3+ years exp</span>
+          </div>
+        </div>
+        <div class="col-lg-5 text-center">
+          <div class="bg-light p-5 rounded-4 shadow-sm border">
+            <i class="bi bi-code-slash display-1 text-orange"></i>
+            <p class="mt-3 mb-0 fw-semibold">“Chidi transformed our restaurant’s online presence — bookings up 70%.”</p>
+            <p class="text-secondary small mt-2">— Tola, Lagos</p>
+            <hr class="my-3">
+            <p class="mb-0 fw-semibold small">“Professional, fast, and understands international clients.”</p>
+            <p class="text-secondary small mt-1">— James, London</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SERVICES ========== -->
+  <section id="services" class="py-5 bg-white">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title display-6 fw-bold">What I do</h2>
+        <p class="section-subtitle lead">Tailored web solutions for every size of business, anywhere</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card service-card h-100 p-4 rounded-4 shadow-sm">
+            <div class="card-body text-center">
+              <i class="bi bi-shop display-5 text-orange mb-3"></i>
+              <h3 class="h4 fw-semibold">Restaurants & Cafés</h3>
+              <p class="text-secondary">Menus, online ordering, reservations, and Google Maps integration to bring in more diners — from Lagos to Lisbon.</p>
+              <ul class="list-unstyled text-start small text-secondary mt-3">
+                <li><i class="bi bi-check2 text-orange me-2"></i>Digital menu & QR</li>
+                <li><i class="bi bi-check2 text-orange me-2"></i>Reservation system</li>
+                <li><i class="bi bi-check2 text-orange me-2"></i>Food gallery</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card service-card h-100 p-4 rounded-4 shadow-sm">
+            <div class="card-body text-center">
+              <i class="bi bi-building display-5 text-orange mb-3"></i>
+              <h3 class="h4 fw-semibold">Small Businesses</h3>
+              <p class="text-secondary">Professional websites that build trust, showcase services, and generate leads while you sleep — for local shops or online‑only brands.</p>
+              <ul class="list-unstyled text-start small text-secondary mt-3">
+                <li><i class="bi bi-check2 text-orange me-2"></i>Booking & contact forms</li>
+                <li><i class="bi bi-check2 text-orange me-2"></i>WhatsApp integration</li>
+                <li><i class="bi bi-check2 text-orange me-2"></i>Google Business setup</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card service-card h-100 p-4 rounded-4 shadow-sm">
+            <div class="card-body text-center">
+              <i class="bi bi-globe2 display-5 text-orange mb-3"></i>
+              <h3 class="h4 fw-semibold">Large Organizations</h3>
+              <p class="text-secondary">Scalable, secure, and accessible websites for companies, NGOs, and institutions — global standards, local touch.</p>
+              <ul class="list-unstyled text-start small text-secondary mt-3">
+                <li><i class="bi bi-check2 text-orange me-2"></i>CMS & dynamic content</li>
+                <li><i class="bi bi-check2 text-orange me-2"></i>Multi-language ready</li>
+                <li><i class="bi bi-check2 text-orange me-2"></i>Performance & SEO</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROJECTS ========== -->
+  <section id="projects" class="py-5 bg-light">
+    <div class="container">
+      <div class="text-center mb-5">
+        <h2 class="section-title display-6 fw-bold">Recent projects</h2>
+        <p class="section-subtitle lead">Live demos — click and explore (clients from 3 continents)</p>
+      </div>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card project-card h-100 rounded-4 shadow-sm overflow-hidden">
+            <div class="bg-orange bg-opacity-10 p-4 text-center">
+              <i class="bi bi-egg-fried display-4 text-orange"></i>
+            </div>
+            <div class="card-body p-4">
+              <h3 class="h5 fw-semibold">Lagos Bistro</h3>
+              <p class="text-secondary small mb-3">Restaurant website with online menu & table booking. <span class="badge bg-light text-dark">🇳🇬 Nigeria</span></p>
+              <a href="#" class="btn btn-orange btn-sm rounded-pill px-3" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card project-card h-100 rounded-4 shadow-sm overflow-hidden">
+            <div class="bg-orange bg-opacity-10 p-4 text-center">
+              <i class="bi bi-briefcase display-4 text-orange"></i>
+            </div>
+            <div class="card-body p-4">
+              <h3 class="h5 fw-semibold">Adeola & Co.</h3>
+              <p class="text-secondary small mb-3">Corporate law firm — clean, trustworthy, mobile-first. <span class="badge bg-light text-dark">🇬🇧 UK</span></p>
+              <a href="#" class="btn btn-orange btn-sm rounded-pill px-3" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card project-card h-100 rounded-4 shadow-sm overflow-hidden">
+            <div class="bg-orange bg-opacity-10 p-4 text-center">
+              <i class="bi bi-cart3 display-4 text-orange"></i>
+            </div>
+            <div class="card-body p-4">
+              <h3 class="h5 fw-semibold">Mama Nkechi Store</h3>
+              <p class="text-secondary small mb-3">E‑commerce for local groceries, delivery in Abuja & beyond. <span class="badge bg-light text-dark">🇳🇬 Nigeria</span></p>
+              <a href="#" class="btn btn-orange btn-sm rounded-pill px-3" target="_blank">Live Demo <i class="bi bi-box-arrow-up-right ms-1"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-5">
+        <a href="#contact" class="btn btn-outline-orange rounded-pill px-4">Start your project →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRICING (dual currency toggle) ========== -->
+  <section id="pricing" class="py-5 bg-white">
+    <div class="container">
+      <div class="text-center mb-4">
+        <h2 class="section-title display-6 fw-bold">Simple pricing</h2>
+        <p class="section-subtitle lead">Choose your currency — flexible for local and international clients</p>
+      </div>
+
+      <!-- Currency toggle -->
+      <div class="d-flex justify-content-center mb-4">
+        <div class="currency-toggle d-inline-flex gap-2 p-1 rounded-pill bg-white border" id="currencyToggle">
+          <button type="button" class="btn active" data-currency="usd" id="btnUsd">$ USD</button>
+          <button type="button" class="btn" data-currency="ngn" id="btnNgn">₦ NGN</button>
+        </div>
+      </div>
+
+      <div class="row g-4 justify-content-center">
+        <!-- Starter -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card pricing-card h-100 rounded-4 p-4 text-center">
+            <h3 class="h4 fw-semibold">Starter</h3>
+            <p class="text-secondary small">For small businesses & restaurants</p>
+            <div class="my-3">
+              <div class="price-main" data-usd="$250" data-ngn="₦150k">$250</div>
+              <div class="price-sub" data-usd="~₦150k for NG" data-ngn="~$200 for international">~₦150k for NG</div>
+            </div>
+            <p class="text-secondary small mb-4">one-time</p>
+            <ul class="list-unstyled text-start small mb-4">
+              <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>3‑page website</li>
+              <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>Mobile responsive</li>
+              <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>WhatsApp & contact form</li>
+              <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>Basic SEO</li>
+              <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>1 month support</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline-orange w-100 rounded-pill py-2">Choose Starter</a>
+          </div>
+        </div>
+
+        <!-- Business (popular) -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card pricing-card popular h-100 rounded-4 p-4 text-center position-relative">
+            <span class="badge bg-orange text-white position-absolute top-0 start-50 translate-middle px-3 py-2 rounded-pill">Most popular</span>
+            <h3 class="h4 fw-semibold mt-2">Business</h3>
+            <p class="text-secondary small">Growing companies & larger orgs</p>
+            <div class="my-3">
+              <div class="price-main" data-usd="$600" data-ngn="₦450k+">$600</div>
+              <div class="price-sub" data-usd="~₦450k+ for NG" data-ngn="~$600 for international">~₦450k+ for NG</div>
+            </div>
+            <p class="text-secondary small mb-4">one-time</p>
+            <ul class="list-unstyled text-start small mb-4">
+              <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>Up to 10 pages / CMS</li>
+              <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>Advanced SEO & analytics</li>
+              <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>Booking / payment integration</li>
+              <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>Speed optimization</li>
+              <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>3 months support</li>
+            </ul>
+            <a href="#contact" class="btn btn-orange w-100 rounded-pill py-2">Choose Business</a>
+          </div>
+        </div>
+
+        <!-- Premium -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card pricing-card h-100 rounded-4 p-4 text-center">
+            <h3 class="h4 fw-semibold">Premium</h3>
+            <p class="text-secondary small">Large scale / international</p>
+            <div class="my-3">
+              <div class="price-main" data-usd="$1500+" data-ngn="₦500k+">$1500+</div>
+              <div class="price-sub" data-usd="~₦500k+ for NG" data-ngn="~$1500+ for international">~₦500k+ for NG</div>
+            </div>
+            <p class="text-secondary small mb-4">project‑based</p>
+            <ul class="list-unstyled text-start small mb-4">
+              <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>Unlimited pages</li>
+              <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>E‑commerce / web apps</li>
+              <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>Multilingual / API</li>
+              <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>Priority support</li>
+              <li class="mb-2"><i class="bi bi-check-lg text-orange me-2"></i>6+ months support</li>
+            </ul>
+            <a href="#contact" class="btn btn-outline-orange w-100 rounded-pill py-2">Let's talk</a>
+          </div>
+        </div>
+      </div>
+      <p class="text-center text-secondary small mt-4">* International clients can pay in USD/GBP/EUR. <a href="#contact" class="text-orange text-decoration-none">Contact me</a> for a custom quote.</p>
+    </div>
+  </section>
+
+  <!-- ========== CONTACT ========== -->
+  <section id="contact" class="py-5 bg-light">
+    <div class="container">
+      <div class="row g-5 align-items-start">
+        <div class="col-lg-5">
+          <h2 class="section-title display-6 fw-bold mb-3">Let’s build something great</h2>
+          <p class="lead text-secondary mb-4">Whether you run a restaurant in Lagos or a company in London — I’ll help you shine online.</p>
+          <div class="contact-info">
+            <p class="mb-3"><i class="bi bi-whatsapp me-2"></i> <a href="https://wa.me/2348012345678" class="text-decoration-none text-dark" target="_blank">+234 906 168 2769</a> (WhatsApp)</p>
+            <p class="mb-3"><i class="bi bi-envelope me-2"></i> <a href="mailto:hello@chidi.dev" class="text-decoration-none text-dark">hello@CubanaTech.dev</a></p>
+            <p class="mb-3"><i class="bi bi-geo-alt me-2"></i> Lagos, Nigeria · remote worldwide</p>
+          </div>
+          <div class="mt-4">
+            <a href="https://wa.me/2348012345678?text=Hi%20Chidi%2C%20I%20saw%20your%20portfolio" target="_blank" class="btn whatsapp-btn rounded-pill px-4 py-2 me-2 mb-2">
+              <i class="bi bi-whatsapp me-1"></i> Message me
+            </a>
+          </div>
+          <p class="text-secondary small mt-3"><i class="bi bi-clock me-1"></i> I reply within 24 hours, any timezone.</p>
+        </div>
+        <div class="col-lg-7">
+          <div class="card rounded-4 p-4 shadow-sm border-0">
+            <h3 class="h5 fw-semibold mb-3">Send a quick message</h3>
+            <form id="contactForm">
+              <div class="mb-3">
+                <label for="name" class="form-label small fw-semibold">Your name</label>
+                <input type="text" class="form-control" id="name" placeholder="e.g. Tunde Bakare" required>
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label small fw-semibold">Email address</label>
+                <input type="email" class="form-control" id="email" placeholder="tunde@example.com" required>
+              </div>
+              <div class="mb-3">
+                <label for="message" class="form-label small fw-semibold">What do you need?</label>
+                <textarea class="form-control" id="message" rows="4" placeholder="Tell me about your project, timeline, budget..." required></textarea>
+              </div>
+              <button type="submit" class="btn btn-orange rounded-pill px-4 py-2">Send message</button>
+              <p id="formFeedback" class="mt-3 mb-0 small text-success fw-semibold" style="display: none;">✓ Thanks! I’ll reply within 24h.</p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-white border-top py-4">
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center">
+      <p class="mb-0 text-secondary small">© 2025 CubanaTech Studio — web developer · <i class="bi bi-globe2"></i> working globally</p>
+      <div class="d-flex gap-3 mt-2 mt-md-0">
+        <a href="#" class="text-secondary small text-decoration-none">GitHub</a>
+        <a href="#" class="text-secondary small text-decoration-none">LinkedIn</a>
+        <a href="#" class="text-secondary small text-decoration-none">Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- vanilla JS: currency toggle + contact form + smooth scroll -->
+  <script>
+    (function() {
+      // ---------- CURRENCY TOGGLE ----------
+      const btnUsd = document.getElementById('btnUsd');
+      const btnNgn = document.getElementById('btnNgn');
+      const priceMains = document.querySelectorAll('.price-main');
+      const priceSubs = document.querySelectorAll('.price-sub');
+
+      function setCurrency(currency) {
+        // toggle active button styles
+        if (currency === 'usd') {
+          btnUsd.classList.add('active');
+          btnNgn.classList.remove('active');
+        } else {
+          btnNgn.classList.add('active');
+          btnUsd.classList.remove('active');
+        }
+
+        // swap text content
+        priceMains.forEach(el => {
+          el.textContent = currency === 'usd' ? el.dataset.usd : el.dataset.ngn;
+        });
+        priceSubs.forEach(el => {
+          el.textContent = currency === 'usd' ? el.dataset.usd : el.dataset.ngn;
+        });
+      }
+
+      // default: USD
+      setCurrency('usd');
+
+      btnUsd.addEventListener('click', () => setCurrency('usd'));
+      btnNgn.addEventListener('click', () => setCurrency('ngn'));
+
+      // ---------- CONTACT FORM (fake) ----------
+      const form = document.getElementById('contactForm');
+      const feedback = document.getElementById('formFeedback');
+      if (form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          feedback.style.display = 'block';
+          form.reset();
+          setTimeout(() => {
+            feedback.style.display = 'none';
+          }, 5000);
+        });
+      }
+
+      // ---------- SMOOTH SCROLL ----------
+      document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+          const href = this.getAttribute('href');
+          if (href === "#" || href === "") return;
+          const target = document.querySelector(href);
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+            const navbarCollapse = document.getElementById('mainNav');
+            if (navbarCollapse && navbarCollapse.classList.contains('show')) {
+              navbarCollapse.classList.remove('show');
+            }
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
